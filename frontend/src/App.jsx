@@ -3,7 +3,6 @@ import { Route, Routes } from "react-router-dom"
 import Navbar from "./components/Navbar"
 import HomePage from "./pages/HomePage"
 import CreatePage from "./pages/CreatePage"
-import Footer from "./components/Footer"
 function App() {
   return (
     <Box minH = "100vh" bg={useColorModeValue("gray.300","gray.900")}>
