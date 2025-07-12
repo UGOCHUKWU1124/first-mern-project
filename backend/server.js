@@ -6,7 +6,10 @@ import productRoutes from "./routes/productRoutes.js";
 import cors from "cors";
 
 const app = express();//create an express app
-app.use(cors()); //It lets your frontend (5173) talk to backend (5000)
+app.use(cors({
+    origin: "https:ugo-first-mern-backend.onrender.com",
+    credentials: true
+})); //It lets your frontend (5173) talk to backend (5000)
 const PORT = process.env.PORT || 5000;
 dotenv.config(); //load env variables
 app.use(express.json());//allows us to accept JSON data in the req.body
