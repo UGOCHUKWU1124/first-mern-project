@@ -11,13 +11,14 @@ export const useProductStore = create((set) => ({
             return{success:false, message:"Please fill in all fields."}
         }
     
-        const res = await fetch("http://localhost:5000/api/products", {
-        method: "POST",
-        headers: {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/api/products`, {
+    method: "POST",
+    headers: {
         "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newProduct),
-});
+    },
+    body: JSON.stringify(newProduct),
+    });
+
 
     const data = await res.json();
     set((state) => ({products:[...state.products, data.data]})) //from backend product controller
@@ -34,7 +35,7 @@ export const useProductStore = create((set) => ({
     },
 
     deleteProducts:async(pid)=>{
-        const res = await fetch(`http://localhost:5000/api/products/${pid}`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/products/${pid}`, {
             method:"DELETE",
         });
         const data = await res.json();
@@ -53,13 +54,15 @@ export const useProductStore = create((set) => ({
             return { success: false, message: "Please fill in all fields." };
         }
 
-        const res = await fetch(`http://localhost:5000/api/products/${pid}`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/products/${pid}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(updatedProduct),
         });
+
+
 
         const data = await res.json();
         if (!data.success) {
