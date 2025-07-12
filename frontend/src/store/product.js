@@ -27,7 +27,7 @@ export const useProductStore = create((set) => ({
 
     fetchProducts:async() =>{ // This function fetches products from the backend
         // It makes a GET request to the /api/products endpoint
-        const res = await fetch ("http://localhost:5000/api/products"); // This is the endpoint to fetch products
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/products`); // This is the endpoint to fetch products
         const data = await res.json();// This parses the JSON response from the server
         //set the products state with the fetched data
        set({ products: data.data || data }); // supports both formats
