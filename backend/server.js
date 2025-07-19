@@ -14,6 +14,10 @@ app.use(cors({
     credentials: true
 }));
 
+app.get("/", (req, res) => {
+    res.send("Backend Server is running");
+}); 
+
 // Middleware
 app.use(express.json()); // Accept JSON payloads
 
